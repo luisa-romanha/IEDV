@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1C1C1C">
+  <title>Bem-vindo à IEDV Global — Minha Família</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS — Cinza-carvão do logo como base
+    ───────────────────────────────────────── */
+    :root {
+      --bg:          #1C1C1C;
+      --bg-surface:  #272727;
+      --bg-elevated: #323232;
+      --bg-input:    #2C2C2C;
+      --text:        #F2F2F2;
+      --text-muted:  rgba(255,255,255,0.38);
+      --text-light:  rgba(255,255,255,0.65);
+      --border:      rgba(255,255,255,0.07);
+      --border-md:   rgba(255,255,255,0.12);
+      --border-dark: rgba(255,255,255,0.22);
+      --btn-bg:      #FFFFFF;
+      --btn-text:    #1C1C1C;
+      --btn-hover:   #E8E8E8;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body { min-height: 100dvh; background: var(--bg); overflow-x: hidden; }
+
+    .u-hidden { display: none !important; }
+
+
+    /* ══════════════════════════════════════
+       1. SPLASH
+    ══════════════════════════════════════ */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    #splash.splash--exit {
+      opacity: 0;
+      transform: scale(1.04);
+      pointer-events: none;
+    }
+
+    .splash__logo {
+      opacity: 0;
+      transform: translateY(14px) scale(0.88);
+      animation: sLogoIn 1.1s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
+      margin-bottom: 14px;
+    }
+
+    .splash__logo img {
+      width: min(72px, 20vw);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .splash__brand {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: sTagIn 0.8s cubic-bezier(0.22,1,0.36,1) 1.1s forwards;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1;
+    }
+
+    .splash__brand-iedv {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 12vw, 56px);
+      letter-spacing: 0.12em;
+      color: #FFFFFF;
+    }
+
+    .splash__brand-global {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(10px, 3vw, 13px);
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .splash__sep {
+      width: 1px;
+      height: 0;
+      background: rgba(255,255,255,0.16);
+      animation: sSepIn 0.5s ease 1.7s forwards;
+      margin-bottom: 28px;
+    }
+
+    .splash__tagline {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: sTagIn 0.9s cubic-bezier(0.22,1,0.36,1) 2.0s forwards;
+    }
+
+    .splash__tagline p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(18px, 5.5vw, 28px);
+      color: rgba(255,255,255,0.80);
+    }
+
+    @keyframes sLogoIn { to { opacity:1; transform:translateY(0) scale(1); } }
+    @keyframes sSepIn  { to { height:40px; } }
+    @keyframes sTagIn  { to { opacity:1; transform:translateY(0); } }
+
+    @media (prefers-reduced-motion:reduce) {
+      .splash__logo,.splash__brand,.splash__sep,.splash__tagline {
+        animation:none; opacity:1; transform:none;
+      }
+    }
+
+
+    /* ══════════════════════════════════════
+       2. LOGO FIXO — superior esquerdo
+    ══════════════════════════════════════ */
+    #global-logo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 500;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
+    }
+
+    #global-logo.logo--visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #global-logo img {
+      width: 56px;
+      height: auto;
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+
+    #global-logo:hover img  { opacity: 0.7; }
+    #global-logo:active img { opacity: 0.5; }
+
+    .page-top-offset { height: 64px; }
+
+
+    /* ══════════════════════════════════════
+       3. FORM PAGE
+    ══════════════════════════════════════ */
+    #form-page {
+      min-height: 100dvh;
+      background: var(--bg);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      padding-bottom: 60px;
+    }
+
+    #form-page.page--in { opacity:1; transform:translateY(0); }
+
+    .fp-hero {
+      padding: 32px 28px 36px;
+      text-align: center;
+    }
+
+    .fp-hero__eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .fp-hero__title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 15vw, 80px);
+      line-height: 0.9;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .fp-hero__sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(17px, 4.5vw, 22px);
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
+
+    .fp-hero__text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .fp-divider {
+      width: 36px;
+      height: 1px;
+      background: rgba(255,255,255,0.14);
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
+
+    .fp-wrap {
+      padding: 0 20px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .fp-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px 22px 24px;
+    }
+
+    .fp-card__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    .form-group input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 15px 16px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group input::placeholder { color: rgba(255,255,255,0.18); }
+
+    .form-group input:focus {
+      border-color: var(--border-dark);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+    }
+
+    .form-group input.input--error {
+      border-color: rgba(220,80,80,0.5);
+      box-shadow: 0 0 0 3px rgba(220,80,80,0.07);
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 17px 24px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      border: none;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-submit:hover  { background: var(--btn-hover); }
+    .btn-submit:active { background: #D0D0D0; transform: scale(0.984); }
+    .btn-submit.loading { opacity: 0.6; pointer-events: none; }
+
+    .fp-disclaimer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    @keyframes cardShake {
+      0%,100% { transform:translateX(0); }
+      20%      { transform:translateX(-7px); }
+      60%      { transform:translateX(7px); }
+      80%      { transform:translateX(-3px); }
+    }
+
+    .fp-card.card--shake { animation: cardShake 0.4s ease; }
+
+
+    /* ══════════════════════════════════════
+       4. MODAL BRINDE
+    ══════════════════════════════════════ */
+    #brinde-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    #brinde-modal.modal--in {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-lg);
+      padding: 40px 28px 32px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.42s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    #brinde-modal.modal--in .modal-card { transform: translateY(0) scale(1); }
+
+    .modal__icon {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 22px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-md);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      animation: iconBeat 2.2s ease-in-out infinite;
+    }
+
+    @keyframes iconBeat {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.07); }
+    }
+
+    .modal__title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.05;
+    }
+
+    .modal__sep {
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 auto 18px;
+      border-radius: 2px;
+    }
+
+    .modal__text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+
+    .modal__text strong { color: var(--text); font-weight: 600; }
+
+    .btn-modal-close {
+      width: 100%;
+      padding: 15px 20px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-modal-close:hover  { background: var(--btn-hover); }
+    .btn-modal-close:active { background: #D0D0D0; }
+
+    @media (max-width: 360px) {
+      .fp-hero  { padding: 24px 18px 28px; }
+      .fp-wrap  { padding: 0 14px; }
+      .fp-card  { padding: 20px 14px 18px; }
+      .modal-card { padding: 30px 18px 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ SPLASH ══════════ -->
+  <div id="splash" aria-hidden="true">
+    <div class="splash__logo">
+      <img src="/IEDV/img/logo_chama.svg" alt="Ícone IEDV">
+    </div>
+    <div class="splash__brand">
+      <span class="splash__brand-iedv">IEDV</span>
+      <span class="splash__brand-global">GLOBAL</span>
+    </div>
+    <div class="splash__sep"></div>
+    <div class="splash__tagline">
+      <p>minha família.</p>
+    </div>
+  </div>
+
+  <!-- Logo fixo — superior esquerdo — clique volta para / -->
+  <a id="global-logo" href="./" aria-label="Ir para a página principal">
+    <img src="/IEDV/img/logo_chama.svg" alt="IEDV Global">
+  </a>
+
+  <!-- ══════════ FORM PAGE ══════════ -->
+  <div id="form-page" class="u-hidden">
+
+    <div class="page-top-offset"></div>
+
+    <div class="fp-hero">
+      <span class="fp-hero__eyebrow">IEDV GLOBAL · Sapucaia do Sul, RS</span>
+      <h1 class="fp-hero__title">SEJA<br>BEM-VINDO!</h1>
+      <p class="fp-hero__sub">Encontro de Vidas</p>
+      <div class="fp-divider"></div>
+      <p class="fp-hero__text">
+        Que alegria ter você aqui hoje! Temos uma surpresa especial para você. Preencha o formulário abaixo e venha buscar o seu presente.
+      </p>
+    </div>
+
+    <div class="fp-wrap">
+      <div class="fp-card" id="fp-card">
+        <p class="fp-card__label">Suas informações</p>
+
+        <form id="visitor-form" novalidate autocomplete="on">
+
+          <div class="form-group">
+            <label for="f-name">Seu nome</label>
+            <input
+              type="text" id="f-name" name="name"
+              placeholder="Como você se chama?"
+              autocomplete="given-name"
+              inputmode="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-phone">WhatsApp / Telefone</label>
+            <input
+              type="tel" id="f-phone" name="phone"
+              placeholder="(51) 9 9999-9999"
+              autocomplete="tel"
+              inputmode="tel" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-city">Cidade onde mora</label>
+            <input
+              type="text" id="f-city" name="city"
+              placeholder="Ex: Sapucaia do Sul"
+              autocomplete="address-level2"
+              inputmode="text" required>
+          </div>
+
+          <button type="submit" class="btn-submit" id="btn-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/>
+              <path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+            Quero receber meu brinde!
+          </button>
+
+        </form>
+      </div>
+
+      <p class="fp-disclaimer">
+        Suas informações são usadas apenas internamente pela equipe IEDV para fins de boas-vindas.
+      </p>
+    </div>
+
+  </div><!-- /form-page -->
+
+  <!-- ══════════ MODAL BRINDE ══════════ -->
+  <div id="brinde-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+
+      <div class="modal__icon">🎁</div>
+
+      <h2 class="modal__title" id="modal-title">
+        VOCÊ GANHOU<br>UM BRINDE!
+      </h2>
+
+      <div class="modal__sep"></div>
+
+      <p class="modal__text">
+        <strong>Passe na recepção ao final do culto</strong> para receber o seu presente. Nossa equipe estará esperando por você com muito carinho!
+      </p>
+
+      <button class="btn-modal-close" id="modal-close-btn">
+        Entendido — Ir para a página da IEDV
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const splash     = document.getElementById('splash');
+      const formPage   = document.getElementById('form-page');
+      const modal      = document.getElementById('brinde-modal');
+      const globalLogo = document.getElementById('global-logo');
+      const form       = document.getElementById('visitor-form');
+      const fpCard     = document.getElementById('fp-card');
+      const btnSubmit  = document.getElementById('btn-submit');
+      const modalClose = document.getElementById('modal-close-btn');
+      const fName      = document.getElementById('f-name');
+      const fPhone     = document.getElementById('f-phone');
+      const fCity      = document.getElementById('f-city');
+
+      const reflow = el => void el.offsetHeight;
+
+      function showPage(el) {
+        el.classList.remove('u-hidden');
+        reflow(el);
+        el.classList.add('page--in');
+      }
+
+      function goHome() {
+        window.location.href = './';
+      }
+
+      globalLogo.addEventListener('click', e => {
+        e.preventDefault();
+        goHome();
+      });
+
+      /* Máscara telefone BR */
+      fPhone.addEventListener('input', () => {
+        let v = fPhone.value.replace(/\D/g, '').slice(0, 11);
+        if      (v.length === 11) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        else if (v.length >= 7)  v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+        else if (v.length >= 3)  v = v.replace(/(\d{2})(\d+)/, '($1) $2');
+        fPhone.value = v;
+      });
+
+      /* Splash → Form (3.4s total) */
+      setTimeout(() => {
+        splash.classList.add('splash--exit');
+        setTimeout(() => {
+          splash.style.display = 'none';
+          showPage(formPage);
+          globalLogo.classList.add('logo--visible');
+        }, 900);
+      }, 3400);
+
+      /* Submit */
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let hasError = false;
+        [fName, fPhone, fCity].forEach(input => {
+          if (!input.value.trim()) {
+            input.classList.add('input--error');
+            hasError = true;
+          } else {
+            input.classList.remove('input--error');
+          }
+        });
+
+        if (hasError) {
+          fpCard.classList.remove('card--shake');
+          reflow(fpCard);
+          fpCard.classList.add('card--shake');
+          fpCard.addEventListener('animationend', () => fpCard.classList.remove('card--shake'), { once: true });
+          return;
+        }
+
+        btnSubmit.textContent = 'Aguarde...';
+        btnSubmit.classList.add('loading');
+
+        /* Integração backend — descomentar quando disponível:
+        fetch('/api/visitante', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:  fName.value.trim(),
+            phone: fPhone.value.trim(),
+            city:  fCity.value.trim()
+          })
+        }); */
+
+        setTimeout(openModal, 500);
+      });
+
+      [fName, fPhone, fCity].forEach(i =>
+        i.addEventListener('input', () => i.classList.remove('input--error'))
+      );
+
+      function openModal() {
+        modal.removeAttribute('style');
+        reflow(modal);
+        modal.classList.add('modal--in');
+        modalClose.focus();
+      }
+
+      modalClose.addEventListener('click', () => {
+        modal.classList.remove('modal--in');
+        setTimeout(goHome, 400);
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('modal--in')) modalClose.click();
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
