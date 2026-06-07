@@ -18,6 +18,7 @@ const mpaRewrite = {
 
 export default defineConfig({
   root: '.',
+  base: '/IEDV/',
   plugins: [mpaRewrite],
   server: {
     port: 3000,
