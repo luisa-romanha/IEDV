@@ -6,7 +6,7 @@ const mpaRewrite = {
   configureServer(server) {
     server.middlewares.use((req, _res, next) => {
       if (req.url === '/visitantes' || req.url === '/visitantes/') {
-        req.url = '/visitante.html';
+        req.url = '/visitantes.html';
       }
       if (req.url === '/seja-iedv' || req.url === '/seja-iedv/') {
         req.url = '/seja-iedv.html';
@@ -30,7 +30,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main:      resolve(__dirname, 'index.html'),
-        visitante: resolve(__dirname, 'visitante.html'),
+        visitantes: resolve(__dirname, 'visitantes.html'),
         'seja-iedv': resolve(__dirname, 'seja-iedv.html'),
       }
     }
