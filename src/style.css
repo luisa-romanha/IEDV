@@ -588,8 +588,21 @@ a    { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .hero-content { padding: 0 24px; }
   .hero-scroll-hint { right: 20px; bottom: 24px; }
-  .hero-sound-btn { right: 20px; bottom: 72px; }
   #hero { padding-bottom: 64px; }
+
+  /* Vídeo landscape — mostrar completo sem corte no portrait mobile */
+  .hero-video {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  /* Botão de som posicionado encostado ao canto inferior do vídeo,
+     usando a proporção 16:9 para calcular onde o vídeo termina      */
+  .hero-sound-btn {
+    bottom: auto;
+    top: calc(50dvh + 28.125vw + 10px);
+    right: 16px;
+  }
 }
 
 
