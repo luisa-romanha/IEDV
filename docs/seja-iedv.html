@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1C1C1C">
+  <title>Quero Fazer Parte — IEDV Global</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #1C1C1C;
+      --bg-surface:  #272727;
+      --bg-elevated: #323232;
+      --bg-input:    #2C2C2C;
+      --text:        #F2F2F2;
+      --text-muted:  rgba(255,255,255,0.38);
+      --text-light:  rgba(255,255,255,0.65);
+      --border:      rgba(255,255,255,0.07);
+      --border-md:   rgba(255,255,255,0.14);
+      --white:       #FFFFFF;
+      --btn-bg:      #FFFFFF;
+      --btn-text:    #1C1C1C;
+      --btn-hover:   #E8E8E8;
+      --r-sm: 6px;
+      --r-md: 12px;
+      --r-lg: 18px;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-serif:   'Playfair Display', serif;
+      --max-w: 720px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    body { min-height: 100dvh; overflow-x: hidden; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Logo fixo ── */
+    #global-logo {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 100;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #global-logo img {
+      width: 44px;
+      height: auto;
+      display: block;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    #global-logo:hover img { opacity: 1; }
+
+    .logo-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-brand__name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+
+    .logo-brand__sub {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding: 120px 24px 72px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 14vw, 96px);
+      line-height: 0.9;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .page-hero__sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(17px, 4vw, 22px);
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .page-hero__body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Separador ── */
+    .sep {
+      width: 36px;
+      height: 1px;
+      background: var(--border-md);
+      margin: 48px auto;
+    }
+
+    /* ── Wrapper central ── */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Seções ── */
+    .section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section__eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 7vw, 52px);
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .section__body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    /* ── Cultos ── */
+    .cultos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .culto-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .culto-row:first-child { border-top: 1px solid var(--border); }
+
+    .culto-row__day {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      min-width: 110px;
+    }
+
+    .culto-row__name {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      padding: 0 16px;
+    }
+
+    .culto-row__time {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--bg);
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── Células ── */
+    .celulas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 28px;
+    }
+
+    .celula-card {
+      background: var(--bg-surface);
+      padding: 24px 20px;
+    }
+
+    .celula-card__icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .celula-card__title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .celula-card__desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 480px) {
+      .celulas-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Endereço ── */
+    .address-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .address-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .address-line svg { flex-shrink: 0; margin-top: 2px; opacity: 0.5; }
+
+    address { font-style: normal; }
+
+    /* ── Formulário ── */
+    .form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+    }
+
+    .form-card__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 14px 16px;
+      font-size: 16px;
+      font-family: var(--font-body);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.35)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-group input::placeholder { color: rgba(255,255,255,0.18); }
+    .form-group select option { background: var(--bg-surface); }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: rgba(255,255,255,0.28);
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+    }
+
+    .form-group input.error { border-color: rgba(220,80,80,0.5); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 17px 24px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.07em;
+      border: none;
+      border-radius: var(--r-sm);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-submit:hover  { background: var(--btn-hover); }
+    .btn-submit:active { transform: scale(0.984); }
+    .btn-submit.loading { opacity: 0.6; pointer-events: none; }
+
+    .form-disclaimer {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Confirmação ── */
+    #confirmacao {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #confirmacao.visible { display: block; }
+
+    .confirmacao__icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .confirmacao__title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .confirmacao__text {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-sm);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+    /* ── Footer ── */
+    .page-footer {
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+
+    .page-footer p {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes cardShake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-7px); }
+      60%      { transform: translateX(7px); }
+      80%      { transform: translateX(-3px); }
+    }
+
+    .form-card.shake { animation: cardShake 0.4s ease; }
+  </style>
+</head>
+<body>
+
+  <!-- Logo fixo -->
+  <a id="global-logo" href="/" aria-label="Voltar para a página principal">
+    <img src="/IEDV/img/logo_chama.svg" alt="IEDV">
+    <div class="logo-brand">
+      <span class="logo-brand__name">IEDV</span>
+      <span class="logo-brand__sub">Global</span>
+    </div>
+  </a>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <span class="eyebrow">IEDV Global · Sapucaia do Sul, RS</span>
+    <h1 class="page-hero__title">QUERO<br>FAZER PARTE.</h1>
+    <p class="page-hero__sub">minha família.</p>
+    <p class="page-hero__body">
+      Aqui você não é apenas mais um visitante — você é família. Conheça como funciona a nossa comunidade e dê o primeiro passo.
+    </p>
+  </div>
+
+  <!-- ── Cultos ── -->
+  <div class="wrap">
+    <div class="sep" style="margin-top:0"></div>
+
+    <section class="section" style="border-top:none; padding-top:0">
+      <p class="section__eyebrow">Agenda</p>
+      <h2 class="section__title">QUANDO NOS<br>ENCONTRAR.</h2>
+      <div class="cultos-list">
+        <div class="culto-row">
+          <span class="culto-row__day">QUINTA</span>
+          <span class="culto-row__name">Culto de Família</span>
+          <span class="culto-row__time">20:00h</span>
+        </div>
+        <div class="culto-row">
+          <span class="culto-row__day">SÁBADO</span>
+          <span class="culto-row__name">PULSE — Jovens <span class="badge">PULSE</span></span>
+          <span class="culto-row__time">20:00h</span>
+        </div>
+        <div class="culto-row">
+          <span class="culto-row__day">DOMINGO</span>
+          <span class="culto-row__name">Celebração de Domingo</span>
+          <span class="culto-row__time">20:00h</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Células ── -->
+    <section class="section">
+      <p class="section__eyebrow">Células</p>
+      <h2 class="section__title">MAIS DO QUE<br>UM CULTO.</h2>
+      <p class="section__body">
+        As células são grupos menores que se reúnem durante a semana — momentos de comunhão, estudo da Palavra e cuidado mútuo. É onde a família cresce de verdade.
+      </p>
+      <div class="celulas-grid">
+        <div class="celula-card">
+          <div class="celula-card__icon">🏡</div>
+          <p class="celula-card__title">CÉLULA DE FAMÍLIA</p>
+          <p class="celula-card__desc">Para casais e famílias que buscam crescer juntos na fé e no relacionamento.</p>
+        </div>
+        <div class="celula-card">
+          <div class="celula-card__icon">⚡</div>
+          <p class="celula-card__title">PULSE TEENS</p>
+          <p class="celula-card__desc">Espaço dedicado aos jovens e adolescentes, com linguagem e propósito próprios.</p>
+        </div>
+        <div class="celula-card">
+          <div class="celula-card__icon">🙌</div>
+          <p class="celula-card__title">CÉLULA DE MULHERES</p>
+          <p class="celula-card__desc">Comunidade de mulheres que se fortalecem, oram e crescem juntas.</p>
+        </div>
+        <div class="celula-card">
+          <div class="celula-card__icon">✝️</div>
+          <p class="celula-card__title">CÉLULA DE HOMENS</p>
+          <p class="celula-card__desc">Homens que se desafiam mutuamente a viver com propósito e integridade.</p>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--text-muted);">Preencha o formulário abaixo e nossa equipe entrará em contato para te conectar ao grupo certo.</p>
+    </section>
+
+    <!-- ── Endereço ── -->
+    <section class="section">
+      <p class="section__eyebrow">Localização</p>
+      <h2 class="section__title">VENHA<br>NOS VISITAR.</h2>
+      <div class="address-block">
+        <div class="address-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <address>RS-118, 3355<br>Sapucaia do Sul — RS</address>
+        </div>
+        <div class="address-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span>Estacionamento gratuito no local. Chegue 10 min antes.</span>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=RS-118,+3355,+Sapucaia+do+Sul,+RS" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Abrir no Google Maps
+      </a>
+    </section>
+
+    <!-- ── Formulário ── -->
+    <section class="section" id="form-section">
+      <p class="section__eyebrow">Cadastro</p>
+      <h2 class="section__title">DÊ O<br>PRIMEIRO PASSO.</h2>
+      <p class="section__body">Deixe seus dados e entraremos em contato para te acolher na comunidade IEDV.</p>
+
+      <div class="form-card" id="form-card">
+        <p class="form-card__label">Suas informações</p>
+        <form id="familia-form" novalidate autocomplete="on">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">Nome completo</label>
+              <input type="text" id="f-name" name="name" placeholder="Seu nome" autocomplete="given-name" inputmode="text" required>
+            </div>
+            <div class="form-group">
+              <label for="f-phone">WhatsApp</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(51) 9 9999-9999" autocomplete="tel" inputmode="tel" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-city">Cidade</label>
+              <input type="text" id="f-city" name="city" placeholder="Ex: Sapucaia do Sul" autocomplete="address-level2" inputmode="text" required>
+            </div>
+            <div class="form-group">
+              <label for="f-age">Faixa etária</label>
+              <select id="f-age" name="age">
+                <option value="" disabled selected>Selecione</option>
+                <option value="teens">Adolescente (13–17)</option>
+                <option value="jovem">Jovem (18–29)</option>
+                <option value="adulto">Adulto (30–49)</option>
+                <option value="senior">50+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-interesse">Tenho interesse em</label>
+            <select id="f-interesse" name="interesse">
+              <option value="" disabled selected>Selecione</option>
+              <option value="culto">Apenas participar dos cultos</option>
+              <option value="celula">Entrar em uma célula</option>
+              <option value="voluntario">Ser voluntário</option>
+              <option value="todos">Tudo isso!</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit" id="btn-submit">
+            Quero fazer parte
+          </button>
+        </form>
+        <p class="form-disclaimer">Suas informações são usadas apenas para contato pela equipe IEDV.</p>
+      </div>
+
+      <div id="confirmacao">
+        <div class="confirmacao__icon">🙌</div>
+        <h3 class="confirmacao__title">BEM-VINDO À FAMÍLIA!</h3>
+        <p class="confirmacao__text">
+          Recebemos suas informações e nossa equipe vai entrar em contato em breve pelo WhatsApp.<br><br>
+          Nos vemos no próximo culto!
+        </p>
+        <a href="/" class="btn-ghost">Voltar para o site</a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="page-footer">
+    <p>© 2026 IEDV Global · Sapucaia do Sul, RS</p>
+  </footer>
+
+  <script>
+    (() => {
+      const form     = document.getElementById('familia-form');
+      const formCard = document.getElementById('form-card');
+      const confirm  = document.getElementById('confirmacao');
+      const btn      = document.getElementById('btn-submit');
+      const fName    = document.getElementById('f-name');
+      const fPhone   = document.getElementById('f-phone');
+      const fCity    = document.getElementById('f-city');
+
+      // Máscara de telefone
+      fPhone.addEventListener('input', () => {
+        let v = fPhone.value.replace(/\D/g, '').slice(0, 11);
+        if      (v.length === 11) v = v.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        else if (v.length >= 7)  v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+        else if (v.length >= 3)  v = v.replace(/(\d{2})(\d+)/, '($1) $2');
+        fPhone.value = v;
+      });
+
+      [fName, fPhone, fCity].forEach(i =>
+        i.addEventListener('input', () => i.classList.remove('error'))
+      );
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let hasError = false;
+        [fName, fPhone, fCity].forEach(input => {
+          if (!input.value.trim()) { input.classList.add('error'); hasError = true; }
+          else input.classList.remove('error');
+        });
+
+        if (hasError) {
+          formCard.classList.remove('shake');
+          void formCard.offsetHeight;
+          formCard.classList.add('shake');
+          formCard.addEventListener('animationend', () => formCard.classList.remove('shake'), { once: true });
+          return;
+        }
+
+        btn.textContent = 'Enviando...';
+        btn.classList.add('loading');
+
+        /* Backend — descomentar quando disponível:
+        fetch('/api/familia', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:      fName.value.trim(),
+            phone:     fPhone.value.trim(),
+            city:      fCity.value.trim(),
+            age:       document.getElementById('f-age').value,
+            interesse: document.getElementById('f-interesse').value,
+          })
+        }); */
+
+        setTimeout(() => {
+          formCard.style.display = 'none';
+          confirm.classList.add('visible');
+          confirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 600);
+      });
+    })();
+  </script>
+
+</body>
+</html>

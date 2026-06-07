@@ -25,7 +25,7 @@ export default defineConfig({
     open: true
   },
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     emptyOutDir: true,
     rollupOptions: {
       input: {
