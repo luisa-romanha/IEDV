@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEDV — Branding 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: #0d0d0d; }
+  body { font-family: 'Inter', sans-serif; background: #0d0d0d; color: #fff; }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 60px 24px 100px; display: flex; flex-direction: column; gap: 6px; }
+
+  /* ── INTRO LABEL ── */
+  .intro { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+  .intro-line { flex: 1; height: 0.5px; background: rgba(255,255,255,0.15); }
+  .intro-text { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.35); white-space: nowrap; }
+
+  /* ── PIECE 1: KEY VISUAL HERO ── */
+  .piece-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #111;
+    overflow: hidden;
+  }
+  .piece-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 30% 60%, rgba(255,255,255,0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 75% 30%, rgba(255,255,255,0.03) 0%, transparent 70%);
+  }
+  /* grain texture */
+  .piece-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 200px;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .hero-crowd {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 40%, #222 100%);
+    opacity: 0.9;
+  }
+  /* Simulated crowd silhouettes */
+  .hero-crowd svg { position: absolute; bottom: 0; left: 0; width: 100%; }
+
+  .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px 48px; }
+  .hero-eyebrow { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 120px);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: #fff;
+    position: relative;
+  }
+  .hero-title .muted { color: rgba(255,255,255,0.18); }
+  .hero-tag {
+    position: absolute; top: 40px; right: 48px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    line-height: 1.8;
+  }
+  .hero-logo {
+    position: absolute; top: 40px; left: 48px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-logo-icon {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 16px;
+    letter-spacing: 0.01em;
+  }
+  .hero-rule { width: 40px; height: 0.5px; background: rgba(255,255,255,0.25); margin-bottom: 16px; }
+
+  /* ── ROW 2: GRID 3 PANELS ── */
+  .row-3 { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 6px; }
+
+  /* Panel A — Bold statement */
+  .panel-statement {
+    background: #0d0d0d;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    padding: 32px 24px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+  .panel-statement .bg-letter {
+    position: absolute; top: -10px; left: -8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 240px;
+    line-height: 1;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+  .panel-statement .label { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
+  .panel-statement .text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+  .panel-statement .sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 16px; line-height: 1.6; letter-spacing: 0.03em; }
+
+  /* Panel B — Photo + big type */
+  .panel-photo {
+    position: relative;
+    min-height: 320px;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+  .panel-photo-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #1c1c1c 0%, #111 60%, #0d0d0d 100%);
+  }
+  .panel-photo-silhouette {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 75%;
+  }
+  .panel-photo .overlay-text {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 0.85;
+    letter-spacing: 0.01em;
+    color: #fff;
+    padding: 0 16px 12px;
+    z-index: 2;
+  }
+  .panel-photo .tag-top {
+    position: absolute; top: 16px; left: 16px;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    z-index: 2;
+  }
+  .panel-photo .arrow {
+    position: absolute; top: 14px; right: 16px;
+    font-size: 18px; color: rgba(255,255,255,0.5);
+    z-index: 2;
+  }
+
+  /* Panel C — Text only */
+  .panel-text {
+    background: #f5f5f5;
+    color: #111;
+    padding: 28px 22px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 320px;
+  }
+  .panel-text .top-label { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.35); }
+  .panel-text .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: #111;
+  }
+  .panel-text .body { font-size: 12px; line-height: 1.7; color: #555; font-weight: 300; }
+  .panel-text .divider-line { height: 0.5px; background: rgba(0,0,0,0.12); margin: 12px 0; }
+  .panel-text .schedule { font-size: 10px; letter-spacing: 0.12em; color: #333; }
+
+  /* ── ROW 3: FULL WIDTH TYPOGRAPHIC ── */
+  .piece-typo {
+    background: #fff;
+    color: #111;
+    padding: 48px;
+    overflow: hidden;
+    position: relative;
+  }
+  .piece-typo .bleed-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.82;
+    letter-spacing: 0.01em;
+    color: #111;
+    white-space: nowrap;
+  }
+  .piece-typo .bleed-title .outlined {
+    -webkit-text-stroke: 1.5px #111;
+    color: transparent;
+  }
+  .piece-typo .meta-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 0.5px solid rgba(0,0,0,0.12);
+  }
+  .piece-typo .meta-item { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #888; }
+
+  /* ── ROW 4: TWO PANELS ── */
+  .row-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 6px; }
+
+  .panel-dark-quote {
+    background: #111;
+    padding: 40px 36px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 280px;
+    border: 0.5px solid rgba(255,255,255,0.06);
+    position: relative; overflow: hidden;
+  }
+  .panel-dark-quote::before {
+    content: '"';
+    position: absolute; top: -20px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .panel-dark-quote .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+    position: relative; z-index: 1;
+  }
+  .panel-dark-quote .quote-source {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .panel-grid-info {
+    background: #1c1c1c;
+    padding: 32px 28px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+  }
+  .grid-info-item {
+    padding: 20px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .grid-info-item:last-child { border-bottom: none; }
+  .grid-info-item .label { font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
+  .grid-info-item .value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: #fff; }
+  .grid-info-item .detail { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 0.04em; }
+
+  /* ── ROW 5: STATEMENT FULL WIDTH ── */
+  .piece-statement-full {
+    background: #111;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    border: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .piece-statement-full .corner-tag {
+    position: absolute; top: 28px; right: 36px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.2); text-align: right; line-height: 2;
+  }
+  .piece-statement-full .main-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: #fff;
+    max-width: 80%;
+  }
+  .piece-statement-full .sub-row {
+    display: flex; align-items: center; gap: 24px;
+    margin-top: 32px;
+  }
+  .piece-statement-full .sub-line { flex: 1; height: 0.5px; background: rgba(255,255,255,0.1); }
+  .piece-statement-full .sub-text {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .fist-icon { font-size: 24px; }
+
+  /* ── ROW 6: SOCIAL POSTS MOCKUP ── */
+  .row-posts-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2); padding: 24px 0 8px; }
+  .row-posts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .post {
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-dark { background: #111; border: 0.5px solid rgba(255,255,255,0.08); }
+  .post-light { background: #f0f0f0; }
+  .post-mid { background: #222; border: 0.5px solid rgba(255,255,255,0.06); }
+  .post .post-inner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; }
+  .post .post-title {
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+  }
+  .post .post-logo { position: absolute; top: 10px; left: 10px; }
+  .post .post-logo svg { opacity: 0.4; }
+  .post .corner { position: absolute; top: 10px; right: 10px; font-size: 7px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); text-align: right; line-height: 1.8; }
+  .post .corner-dark { color: rgba(0,0,0,0.25); }
+  .post-bg-grain::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px);
+    pointer-events: none;
+  }
+
+  /* ── FOOTER ── */
+  .brand-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 32px 0 0;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    margin-top: 24px;
+  }
+  .brand-footer .name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+  .brand-footer .year { font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-line"></div>
+    <span class="intro-text">IEDV Global · Identidade Visual · 2026</span>
+    <div class="intro-line"></div>
+  </div>
+
+  <!-- PIECE 1: HERO KEY VISUAL -->
+  <div class="piece-hero">
+    <div class="hero-crowd">
+      <!-- crowd silhouette SVG -->
+      <svg viewBox="0 0 1100 400" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;width:100%;opacity:0.25">
+        <ellipse cx="80" cy="400" rx="60" ry="120" fill="white"/>
+        <ellipse cx="160" cy="400" rx="50" ry="100" fill="white"/>
+        <ellipse cx="240" cy="400" rx="55" ry="130" fill="white"/>
+        <ellipse cx="320" cy="400" rx="45" ry="90" fill="white"/>
+        <ellipse cx="400" cy="400" rx="60" ry="140" fill="white"/>
+        <ellipse cx="490" cy="400" rx="50" ry="110" fill="white"/>
+        <ellipse cx="570" cy="400" rx="65" ry="150" fill="white"/>
+        <ellipse cx="660" cy="400" rx="48" ry="100" fill="white"/>
+        <ellipse cx="740" cy="400" rx="58" ry="125" fill="white"/>
+        <ellipse cx="830" cy="400" rx="52" ry="115" fill="white"/>
+        <ellipse cx="910" cy="400" rx="60" ry="135" fill="white"/>
+        <ellipse cx="990" cy="400" rx="55" ry="105" fill="white"/>
+        <ellipse cx="1070" cy="400" rx="50" ry="120" fill="white"/>
+        <!-- arms raised -->
+        <line x1="395" y1="270" x2="360" y2="200" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <line x1="405" y1="270" x2="440" y2="190" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <line x1="565" y1="250" x2="540" y2="175" stroke="white" stroke-width="7" stroke-linecap="round"/>
+        <line x1="575" y1="250" x2="610" y2="165" stroke="white" stroke-width="7" stroke-linecap="round"/>
+        <line x1="235" y1="270" x2="210" y2="200" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <line x1="740" y1="275" x2="718" y2="205" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <line x1="750" y1="275" x2="778" y2="195" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <line x1="908" y1="260" x2="882" y2="185" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <line x1="918" y1="260" x2="946" y2="178" stroke="white" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Logo top-left -->
+    <div class="hero-logo">
+      <div class="hero-logo-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+          <path d="M12 2C8 8 6 12 6 16a6 6 0 0012 0c0-4-2-8-6-14z"/>
+        </svg>
+      </div>
+      <span class="hero-logo-text">IEDV GLOBAL</span>
+    </div>
+
+    <!-- Tag top-right -->
+    <div class="hero-tag">
+      ANO DE<br>ODRES NOVOS<br>2026 ©
+    </div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+      <div class="hero-rule"></div>
+      <div class="hero-eyebrow">Igreja Encontro de Vidas · Sapucaia do Sul, RS</div>
+      <div class="hero-title">
+        MINHA<br>
+        <span class="muted">FA</span>MÍLIA.
+      </div>
+      <div class="hero-sub">Encontro de Vidas</div>
+    </div>
+  </div>
+
+  <!-- ROW 2: THREE PANELS -->
+  <div class="row-3">
+
+    <!-- Panel A: Statement -->
+    <div class="panel-statement">
+      <span class="bg-letter">A</span>
+      <div>
+        <div class="label">Manifesto · 2026</div>
+        <div class="text">NÃO<br>IMPORTA<br>O QUE<br>VOCÊ<br>VIVEU.</div>
+        <div class="sub">É chegada a hora.<br>Novos odres para<br>novo vinho.</div>
+      </div>
+    </div>
+
+    <!-- Panel B: Photo simulation -->
+    <div class="panel-photo">
+      <div class="panel-photo-bg"></div>
+      <!-- Worship hands SVG -->
+      <svg class="panel-photo-silhouette" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;opacity:0.15">
+        <ellipse cx="200" cy="300" rx="80" ry="100" fill="white"/>
+        <ellipse cx="120" cy="300" rx="60" ry="80" fill="white"/>
+        <ellipse cx="280" cy="300" rx="65" ry="90" fill="white"/>
+        <!-- center arms up -->
+        <line x1="185" y1="200" x2="155" y2="110" stroke="white" stroke-width="10" stroke-linecap="round"/>
+        <line x1="215" y1="200" x2="248" y2="100" stroke="white" stroke-width="10" stroke-linecap="round"/>
+        <!-- side people -->
+        <line x1="110" y1="220" x2="88" y2="150" stroke="white" stroke-width="7" stroke-linecap="round"/>
+        <line x1="118" y1="220" x2="142" y2="145" stroke="white" stroke-width="7" stroke-linecap="round"/>
+        <line x1="272" y1="210" x2="250" y2="135" stroke="white" stroke-width="7" stroke-linecap="round"/>
+        <line x1="282" y1="210" x2="308" y2="128" stroke="white" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <div class="tag-top">IEDV Global</div>
+      <div class="arrow">↗</div>
+      <div class="overlay-text" style="z-index:2;">EU<br>NASCI<br>DE<br>NOVO.</div>
+    </div>
+
+    <!-- Panel C: Light info -->
+    <div class="panel-text">
+      <div>
+        <div class="top-label">Cultos · Horários</div>
+        <div class="divider-line" style="margin-top:10px;"></div>
+      </div>
+      <div class="title">QUINTA<br>SÁBADO<br>DOMINGO</div>
+      <div>
+        <div class="divider-line"></div>
+        <div class="body">Todos às 20h.<br>RS-118, 3355<br>Sapucaia do Sul.</div>
+        <div class="divider-line"></div>
+        <div class="schedule">AMAR · SERVIR · ADORAR</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 3: TYPOGRAPHIC BLEED -->
+  <div class="piece-typo">
+    <div class="bleed-title">
+      ISSO É <span class="outlined">IGREJA.</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-item">IEDV · Encontro de Vidas</span>
+      <span class="meta-item">Sapucaia do Sul · RS</span>
+      <span class="meta-item">Est. — 2026 ©</span>
+    </div>
+  </div>
+
+  <!-- ROW 4: QUOTE + INFO GRID -->
+  <div class="row-2">
+
+    <div class="panel-dark-quote">
+      <div class="quote-text">
+        "É nele que encontramos a vida eterna — e aqui é onde a vida começa de novo."
+      </div>
+      <div class="quote-source">Apóstolo João Vieira · @apjoaovieira</div>
+    </div>
+
+    <div class="panel-grid-info">
+      <div class="grid-info-item">
+        <div class="label">Ministérios ativos</div>
+        <div class="value">06</div>
+        <div class="detail">Kids · Pulse · Mulheres · Homens · Casais · Música</div>
+      </div>
+      <div class="grid-info-item">
+        <div class="label">Podcast</div>
+        <div class="value">O AMOR</div>
+        <div class="detail">que constrange — disponível no Spotify</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ROW 5: FULL STATEMENT -->
+  <div class="piece-statement-full">
+    <div class="corner-tag">
+      IEDV GLOBAL<br>
+      ANO DE ODRES NOVOS<br>
+      2026 ©
+    </div>
+    <div class="main-text">
+      ESPERAMOS<br>
+      POR VOCÊ.
+    </div>
+    <div class="sub-row">
+      <div class="sub-text">quinta · sábado · domingo</div>
+      <div class="sub-line"></div>
+      <div class="sub-text">20h · Sapucaia do Sul</div>
+    </div>
+  </div>
+
+  <!-- ROW 6: POSTS MOCKUP -->
+  <div class="row-posts-label">Posts sociais — exemplos de aplicação</div>
+  <div class="row-posts">
+
+    <!-- Post 1 -->
+    <div class="post post-dark post-bg-grain">
+      <div class="post-inner">
+        <svg class="post-logo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="position:absolute;top:10px;left:10px;opacity:0.35">
+          <path d="M12 2C8 8 6 12 6 16a6 6 0 0012 0c0-4-2-8-6-14z"/>
+        </svg>
+        <div class="post-title" style="font-size:32px;color:#fff;">NOSSO<br>MÊS NA<br>IEDV</div>
+      </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post post-light">
+      <div class="post-inner" style="padding:14px;">
+        <div class="post-title" style="font-size:28px;color:#111;line-height:0.9;">AMAR<br>SERVIR<br>ADORAR</div>
+        <div class="corner corner-dark">IEDV<br>GLOBAL</div>
+      </div>
+      <div style="position:absolute;bottom:14px;left:14px;right:14px;height:0.5px;background:rgba(0,0,0,0.1);"></div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post post-mid">
+      <div class="post-inner" style="justify-content:space-between;padding:14px;">
+        <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);">PULSE · SÁB 20H</div>
+        <div>
+          <div style="height:0.5px;background:rgba(255,255,255,0.12);margin-bottom:10px;"></div>
+          <div class="post-title" style="font-size:36px;color:#fff;">HOJE<br>TEM<br>PULSE.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post 4 -->
+    <div class="post post-dark post-bg-grain">
+      <div class="post-inner">
+        <svg class="post-logo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="position:absolute;top:10px;left:10px;opacity:0.35">
+          <path d="M12 2C8 8 6 12 6 16a6 6 0 0012 0c0-4-2-8-6-14z"/>
+        </svg>
+        <div class="corner">BATISMO<br>2026</div>
+        <div class="post-title" style="font-size:28px;color:#fff;line-height:0.9;">EU<br>NASCI<br>DE<br>NOVO.</div>
+      </div>
+      <!-- fake circle photo cutout -->
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-68%);width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);"></div>
+    </div>
+
+    <!-- Post 5 -->
+    <div class="post" style="background:#f0f0f0;">
+      <div class="post-inner" style="justify-content:flex-start;padding:14px;gap:8px;">
+        <div style="font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(0,0,0,0.3);">Quinta às 20h</div>
+        <div class="post-title" style="font-size:30px;color:#111;line-height:0.88;">ESPE<br>RAMOS<br>POR<br>VOCÊ.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="brand-footer">
+    <span class="brand-name" style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);">IEDV GLOBAL</span>
+    <span class="year" style="font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.15);">ANO DE ODRES NOVOS · 2026 ©</span>
+  </div>
+
+</div>
+</body>
+</html>

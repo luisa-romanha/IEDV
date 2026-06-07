@@ -1,0 +1,23 @@
+# ── Dependências ──────────────────────────────────
+node_modules/
+
+# ── Build output ──────────────────────────────────
+dist/
+.vite/
+
+# ── Variáveis de ambiente (segredos) ──────────────
+.env
+.env.*
+!.env.example
+
+# ── Fotos originais RAW (~2 GB — manter só local) ─
+src/assets/
+
+# ── Contexto de desenvolvimento (Claude) ──────────
+.claude/
+
+# ── OS / Editor ───────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+*.local

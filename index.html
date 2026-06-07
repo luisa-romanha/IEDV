@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1C1C1C">
+  <title>IEDV Global — Minha Família. Encontro de Vidas</title>
+  <meta name="description" content="Igreja Encontro de Vidas em Sapucaia do Sul, RS. Um lar de amor, serviço e adoração. Cultos Quinta, Sábado e Domingo às 20h.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       ANIMAÇÃO DE ENTRADA
+  ══════════════════════════════════════ -->
+  <div id="entry-overlay" aria-hidden="true">
+    <div class="entry-logo">
+      <div class="entry-icon">
+        <img src="/img/logo_chama.svg" alt="IEDV">
+      </div>
+      <div class="entry-brand">
+        <span class="entry-brand__iedv">IEDV</span>
+        <span class="entry-brand__global">GLOBAL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HEADER FIXO
+  ══════════════════════════════════════ -->
+  <header id="site-header">
+    <div class="header-inner">
+
+      <a href="/" class="header-logo" aria-label="IEDV Global — Página inicial">
+        <img src="/img/logo_chama.svg" alt="IEDV">
+        <div class="header-brand">
+          <span class="header-brand__name">IEDV <span class="header-brand__global">GLOBAL</span></span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="header-nav">
+        <a href="#galeria"     class="nav-link">Galeria</a>
+        <a href="#agenda"      class="nav-link">Agenda</a>
+        <a href="#mais-perto"  class="nav-link">Mais Perto</a>
+        <a href="#localizacao" class="nav-link">Localização</a>
+        <a href="/seja-iedv"   class="nav-link nav-link--cta">Quero Fazer Parte</a>
+      </nav>
+
+      <button class="header-mobile-btn" id="mobile-btn" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       HERO — Vídeo de boas-vindas
+  ══════════════════════════════════════ -->
+  <section id="hero">
+
+    <div class="hero-video-wrap">
+      <video id="hero-video" class="hero-video" autoplay muted playsinline preload="auto" src="/img/video_hero.mp4"></video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Overlay de play (aparece quando vídeo termina) -->
+    <div class="hero-play-overlay" id="hero-play-overlay" aria-hidden="true">
+      <button class="hero-play-btn" id="hero-play-btn" aria-label="Assistir novamente">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
+    </div>
+
+    <!-- Botão de som -->
+    <button class="hero-sound-btn" id="hero-sound-btn" aria-label="Ativar som">
+      <svg class="icon-sound-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+      <svg class="icon-sound-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+    </button>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">Sapucaia do Sul · RS · 2026</span>
+      <h1 class="hero-title">
+        <span class="hero-title__line1">MINHA</span>
+        <span class="hero-title__line2">FAMÍLIA.</span>
+      </h1>
+      <p class="hero-sub">Encontro de Vidas</p>
+      <a href="#familia" class="btn-hero">
+        Venha fazer parte desta família
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>ROLE</span>
+      <div class="hero-scroll-hint__line"></div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       IDENTIDADE — "Venha fazer parte"
+  ══════════════════════════════════════ -->
+  <section id="familia" class="section-identity">
+    <div class="container">
+      <div class="identity-grid">
+        <div class="identity-text">
+          <span class="section-eyebrow">Quem somos</span>
+          <h2 class="section-title">UM LUGAR<br>PARA CHAMAR<br>DE LAR.</h2>
+          <p class="section-body">
+            Não importa o que você viveu — aqui você encontra um recomeço. A IEDV Global é uma comunidade contemporânea construída sobre os pilares de <strong>amar, servir e adorar</strong>.
+          </p>
+          <div class="identity-actions">
+            <a href="/seja-iedv" class="btn-primary">Quero fazer parte</a>
+            <a href="#agenda" class="btn-ghost">Ver agenda</a>
+          </div>
+        </div>
+        <div class="identity-manifesto">
+          <blockquote class="manifesto-quote">
+            "Novos odres para um novo vinho."
+          </blockquote>
+          <cite class="manifesto-author">Apóstolo João Vieira · Tema 2026</cite>
+          <div class="manifesto-pillars">
+            <div class="pillar">
+              <span class="pillar__word">Amar</span>
+            </div>
+            <div class="pillar__dot"></div>
+            <div class="pillar">
+              <span class="pillar__word">Servir</span>
+            </div>
+            <div class="pillar__dot"></div>
+            <div class="pillar">
+              <span class="pillar__word">Adorar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       GALERIA — Carrossel infinito
+  ══════════════════════════════════════ -->
+  <section id="galeria" class="section-gallery">
+    <div class="gallery-header container">
+      <span class="section-eyebrow">Galeria</span>
+      <h2 class="section-title">UMA IGREJA<br>EM MOVIMENTO.</h2>
+    </div>
+
+    <!-- Carrossel — duplicado para loop perfeito -->
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-item"><img src="/img/gallery/DSC04132.webp" alt="Culto IEDV" loading="eager" decoding="async"><div class="carousel-item__label">Culto</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04138.webp" alt="Adoração IEDV" loading="eager" decoding="async"><div class="carousel-item__label">Adoração</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04145.webp" alt="IEDV Global" loading="eager" decoding="async"><div class="carousel-item__label">Família</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04170.webp" alt="Comunidade IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Comunidade</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04202.webp" alt="Missão IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Missão</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04212.webp" alt="PULSE Jovens" loading="lazy" decoding="async"><div class="carousel-item__label">PULSE</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04228.webp" alt="Célula IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Célula</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04251.webp" alt="Batismo IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Batismo</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04270.webp" alt="Louvor IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Louvor</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04300.webp" alt="Encontro IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Encontro</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04315.webp" alt="Pregação IEDV" loading="lazy" decoding="async"><div class="carousel-item__label">Palavra</div></div>
+        <div class="carousel-item"><img src="/img/gallery/DSC04325.webp" alt="IEDV Global" loading="lazy" decoding="async"><div class="carousel-item__label">Igreja</div></div>
+        <!-- Duplicatas para loop infinito -->
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04132.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Culto</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04138.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Adoração</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04145.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Família</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04170.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Comunidade</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04202.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Missão</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04212.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">PULSE</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04228.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Célula</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04251.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Batismo</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04270.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Louvor</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04300.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Encontro</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04315.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Palavra</div></div>
+        <div class="carousel-item" aria-hidden="true"><img src="/img/gallery/DSC04325.webp" alt="" loading="lazy" decoding="async"><div class="carousel-item__label">Igreja</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       AGENDA — Cultos
+  ══════════════════════════════════════ -->
+  <section id="agenda" class="section-agenda">
+    <div class="container">
+      <div class="agenda-grid">
+
+        <div class="agenda-intro">
+          <span class="section-eyebrow">Agenda</span>
+          <h2 class="section-title">QUANDO<br>NOS ENCONTRAR.</h2>
+          <p class="section-body">
+            Nossos cultos são momentos de celebração intensa, adoração contemporânea e ensinamentos práticos. Venha como você está.
+          </p>
+          <a href="/seja-iedv" class="btn-primary">Quero fazer parte</a>
+        </div>
+
+        <div class="agenda-cards">
+          <div class="agenda-card">
+            <div class="agenda-card__day">QUINTA</div>
+            <div class="agenda-card__info">
+              <span class="agenda-card__time">20:00h</span>
+              <span class="agenda-card__name">Culto de Família</span>
+            </div>
+          </div>
+          <div class="agenda-card agenda-card--highlight">
+            <div class="agenda-card__day">SÁBADO</div>
+            <div class="agenda-card__info">
+              <span class="agenda-card__time">20:00h</span>
+              <span class="agenda-card__name">PULSE — Jovens <span class="agenda-card__badge">PULSE</span></span>
+            </div>
+          </div>
+          <div class="agenda-card">
+            <div class="agenda-card__day">DOMINGO</div>
+            <div class="agenda-card__info">
+              <span class="agenda-card__time">20:00h</span>
+              <span class="agenda-card__name">Celebração de Domingo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       INSTAGRAM CTA
+  ══════════════════════════════════════ -->
+  <section class="section-instagram">
+    <div class="instagram-cta">
+      <div class="instagram-cta__icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4.5"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="instagram-cta__text">
+        <p class="instagram-cta__handle">@iedvglobal</p>
+        <p class="instagram-cta__sub">Acompanhe nossa comunidade no Instagram</p>
+      </div>
+      <a
+        href="https://www.instagram.com/iedvglobal"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="instagram-cta__btn">
+        Seguir
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MAIS PERTO — Ministério de louvor
+  ══════════════════════════════════════ -->
+  <section id="mais-perto" class="section-maisperto">
+    <div class="container">
+
+      <div class="maisperto-text">
+        <div class="maisperto-text__header">
+          <div>
+            <span class="section-eyebrow">Ministério de Louvor</span>
+            <h2 class="section-title">MAIS<br>PERTO.</h2>
+          </div>
+          <div class="maisperto-text__body">
+            <p class="section-body">
+              Música que aproxima. Letras que tocam. O Mais Perto é o ministério de louvor da IEDV Global — adoração contemporânea que nasce da experiência real com Deus. Ouça onde estiver.
+            </p>
+            <a href="https://www.youtube.com/@maisperto" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Ouvir no YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="maisperto-video">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/oLypguh-8ik?si=asddJpnFRkWP-ioZ"
+            title="Mais Perto — IEDV Global"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       LOCALIZAÇÃO
+  ══════════════════════════════════════ -->
+  <section id="localizacao" class="section-location">
+    <div class="container">
+      <div class="location-grid">
+
+        <div class="location-info">
+          <span class="section-eyebrow">Localização</span>
+          <h2 class="section-title">VENHA<br>NOS VISITAR.</h2>
+          <address class="location-address">
+            RS-118, 3355<br>
+            Sapucaia do Sul — RS
+          </address>
+          <div class="location-tip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span>Estacionamento gratuito no local. Chegue 10 min antes.</span>
+          </div>
+          <a href="https://maps.google.com/?q=RS-118,+3355,+Sapucaia+do+Sul,+RS" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Abrir no Google Maps
+          </a>
+        </div>
+
+        <div class="location-map">
+          <div class="location-map__placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Mapa em breve</span>
+            <!--
+              Substituir por:
+              <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="100%" style="border:none" allowfullscreen loading="lazy"></iframe>
+            -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="/img/logo_chama.svg" alt="IEDV" class="footer-logo">
+        <div>
+          <p class="footer-name">IEDV GLOBAL</p>
+          <p class="footer-tagline-text">minha família.</p>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#galeria">Galeria</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#localizacao">Localização</a>
+        <a href="/seja-iedv">Quero Fazer Parte</a>
+      </nav>
+      <p class="footer-copy">© 2026 IEDV Global · Ano de Odres Novos</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
